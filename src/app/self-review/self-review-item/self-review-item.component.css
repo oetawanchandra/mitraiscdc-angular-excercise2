@@ -1,0 +1,12 @@
+textarea {
+    width: 100%;
+}
+
+.warning {
+    color: lightcoral;
+}
+
+.sr-saved {
+    color: lightgreen;
+    font-weight: bold;
+}

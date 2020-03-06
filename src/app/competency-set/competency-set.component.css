@@ -1,0 +1,21 @@
+.mycomp-header {
+    margin-top: 3em;
+    margin-bottom: 1em;
+    padding-left: 15px;
+}
+
+.competency-set-container .table {
+    margin-top: 3em;
+}
+
+.cancel-btn {
+    margin-left: 5px;
+}
+
+.cancel-btn, .save-btn {
+    width: 100px;
+}
+
+.addnew-btn {
+    text-align: right;
+}

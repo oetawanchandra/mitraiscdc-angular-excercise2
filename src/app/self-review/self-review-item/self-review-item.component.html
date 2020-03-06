@@ -1,0 +1,32 @@
+<form #frm="ngForm">
+    <div class="row sritem-box">
+        <div class="col-1" 
+             scope="row">
+             <input type="checkbox"
+                    [(ngModel)]="selfReview.isSelected"
+                    name="checkedItem"
+                    [ngClass]="{'sr-saved': selfReview.isSaved}"
+                    [disabled]="selfReview.isSaved"/>
+        </div>
+        <div class="col-4" [ngClass]="{'sr-saved': selfReview.isSaved}">{{selfReview.competencySet.competency.name}}</div>
+        <div class="col-2">
+            <select [(ngModel)]="selfReview.level" name="selectedLevel">
+                <option *ngFor="let lev of levels" [ngValue]="lev">{{lev}}</option>
+            </select>
+        </div>
+        <div class="col-4">
+            <textarea [(ngModel)]="selfReview.selfClaim" ngModel name="selfClaim" required maxlength="100"></textarea>
+            <span *ngIf="frm.invalid && frm.touched" class="warning">Please enter your self claim</span>
+        </div>
+        <div class="col-1">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deleteModal" (click)="markAsDeleted()">
+                Delete
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <hr/>
+        </div>
+    </div>
+</form>

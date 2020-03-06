@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="col" class="mycomp-header">
+        <h2>My Competency</h2>
+    </div>
+</div>
+<div class="row" *ngIf="enableAddNew">
+    <div class="col-6">
+        <form (ngSubmit)="onAddNew()" #frm="ngForm" class="new-form" #frm="ngForm">
+            <div class="form-group">
+                <label from="competencyCode">Code</label>
+                <input class="form-control form-control-sm" aria-describedby="codeHelp" id="competencyCode" type="text" ngModel name="competencyCode" required #compCode="ngModel" maxlength="100"/>            
+                <small *ngIf="compCode.invalid && compCode.touched" id="nameHelp" class="form-text text-muted">Please enter competency code</small>
+            </div>
+            <div class="form-group">
+                <label from="competencyName">Competency Name</label>
+                <input class="form-control form-control-sm" aria-describedby="nameHelp" id="competencyName" type="text" ngModel name="competencyName" required #compName="ngModel" maxlength="255"/>
+                <small *ngIf="compName.invalid && compName.touched" id="nameHelp" class="form-text text-muted">Please enter competency name</small>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary save-btn" type="submit" [disabled]="frm.invalid">Save</button>
+                <button class="btn btn-primary cancel-btn" (click)="onCancel()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="competency-set-container">
+    <div class="addnew-btn"><button *ngIf="!enableAddNew" class="btn btn-primary right-align" (click)="onEnableAddNew()">Add New</button></div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Code</th>
+                <th scope="col">Competency Set</th>
+                <th scope="col">Claimable</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cs of myCompetencySets">
+                <th scope="row">{{cs.competency.index}}</th>
+                <td>{{cs.competency.id}}</td>
+                <td>{{cs.competency.name}}</td>
+                <td><input type="checkbox" [(ngModel)]="cs.claimable"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
